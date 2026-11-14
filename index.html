@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Vida — Davida &amp; Omoniyi</title>
+<meta name="description" content="Davida &amp; Omoniyi · Monday 29 March 2027 · Abuja, Nigeria">
+<meta name="theme-color" content="#23382B">
+<meta property="og:title" content="La Vida — Davida &amp; Omoniyi">
+<meta property="og:description" content="You are invited · 29 March 2027 · Abuja">
+<link rel="preload" href="assets/img/wax-seal-512.webp" as="image">
+<link rel="preload" href="assets/img/paper-envelope.webp" as="image">
+<link rel="preload" href="assets/fonts/pinyon-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/img/wax-seal-512.webp" type="image/webp">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- Shared SVG: deckled paper edge filter + gold ornaments -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="deckle" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.06" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="flourish" viewBox="0 0 52 52"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M4 48V14C4 8 8 4 14 4h34"/><path d="M10 40c0-18 12-30 30-30"/><path d="M14 14c6 0 8 4 6 7s-7 1-6-3"/><circle cx="4" cy="48" r="1.6" fill="currentColor"/><circle cx="48" cy="4" r="1.6" fill="currentColor"/></g></symbol>
+    <symbol id="ornament" viewBox="0 0 150 40"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M4 20h44M102 20h44"/><path d="M48 20c8-12 18-12 27 0 9-12 19-12 27 0"/><path d="M48 20c8 12 18 12 27 0 9 12 19 12 27 0"/><circle cx="75" cy="20" r="3" fill="currentColor"/><circle cx="4" cy="20" r="1.5" fill="currentColor"/><circle cx="146" cy="20" r="1.5" fill="currentColor"/></g></symbol>
+    <symbol id="crown" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M10 46l4-24 10 12 8-18 8 18 10-12 4 24z"/><path d="M12 52h40"/><circle cx="32" cy="13" r="2.2"/><circle cx="14" cy="20" r="1.6"/><circle cx="50" cy="20" r="1.6"/></g></symbol>
+    <symbol id="heart" viewBox="0 0 16 16"><path d="M8 14s-6-3.6-6-8a3.2 3.2 0 0 1 6-1.6A3.2 3.2 0 0 1 14 6c0 4.4-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ OPENING: the envelope ============ -->
+<div class="opener" id="opener" role="dialog" aria-modal="true" aria-labelledby="op-title">
+  <div class="env" id="env">
+    <div class="env-inside"></div>
+    <div class="env-card" id="env-card">
+      <div class="paper paper-in">
+        <img class="botan tl" src="assets/img/floral-corner-a-600.webp" width="600" height="549" alt="">
+        <img class="botan br" src="assets/img/floral-corner-b-600.webp" width="600" height="457" alt="">
+        <div class="n press">Davida</div><div class="amp">&amp;</div><div class="n press">Omoniyi</div>
+        <div class="d">29 · 03 · 2027</div>
+      </div>
+    </div>
+    <div class="env-pocket" id="env-pocket">
+      <div class="face"></div>
+      <img class="botan l" src="assets/img/floral-corner-a-600.webp" width="600" height="549" alt="">
+      <img class="botan r" src="assets/img/floral-corner-b-600.webp" width="600" height="457" alt="">
+      <div class="fold"></div><div class="edge" id="pocket-edge"></div>
+    </div>
+    <div class="flap-shadow" id="flap-shadow"></div>
+    <div class="env-flap" id="env-flap">
+      <div class="face front"><div class="shade" id="shade-front"></div></div>
+      <div class="face back"><div class="shade" id="shade-back" style="opacity:.5"></div></div>
+    </div>
+    <canvas id="ribbon" aria-hidden="true"></canvas>
+    <div class="seal-wrap" id="seal-wrap">
+      <div class="seal-shadow" id="seal-shadow"></div>
+      <button id="seal" type="button" aria-label="Break the wax seal and open your invitation">
+        <img src="assets/img/wax-seal-512.webp" width="512" height="512" alt="">
+      </button>
+    </div>
+    <h1 class="op-text op-title press" id="op-title">You Are Invited</h1>
+    <p class="op-text op-for" id="op-for">Davida &amp; Omoniyi</p>
+    <p class="op-text op-hint" id="op-hint"><span>Tap the seal to open</span></p>
+  </div>
+</div>
+
+<div class="page" id="page">
+<div class="sheet">
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="paper hero-card">
+    <img class="botan tl" src="assets/img/floral-corner-a.webp" width="1091" height="999" alt="">
+    <img class="botan br" src="assets/img/floral-corner-b.webp" width="1052" height="802" alt="">
+    <div class="mark">La Vida</div>
+    <p class="dear" id="dear" hidden></p>
+    <p class="together">Together with their families</p>
+    <h2 class="names press">Davida<span class="amp">&amp;</span>Omoniyi</h2>
+    <p class="invite">invite you to celebrate their wedding</p>
+    <div class="date" aria-label="Monday 29 March 2027">
+      <span class="m">MARCH</span>
+      <span class="dd press"><i></i>29<i></i></span>
+      <span class="w">MONDAY · 2027</span>
+    </div>
+    <div class="place">
+      <p class="eyebrow">To be held in</p>
+      <strong class="press">Abuja, Nigeria</strong>
+      <small>Venue to be announced</small>
+    </div>
+    <p class="tagline">A love rooted in faith.<br>A life devoted to purpose.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#countdown">Countdown</a>
+  <a href="#story">Story</a>
+  <a href="#celebrations">The Day</a>
+  <a href="#dress">Dress</a>
+  <a href="#gift">Gifts</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<main>
+
+<!-- ============ COUNTDOWN ============ -->
+<section class="countdown" id="countdown" aria-labelledby="cd-title">
+  <h2 class="h2 press" id="cd-title">Countdown</h2>
+  <p class="eyebrow" style="margin-top:12px">Until 29 March 2027</p>
+  <div class="wreath">
+    <img class="botan" src="assets/img/floral-wreath-800.webp" srcset="assets/img/floral-wreath-800.webp 800w, assets/img/floral-wreath.webp 1227w" sizes="(max-width:470px) 92vw, 430px" width="800" height="774" alt="" loading="lazy" decoding="async">
+    <div class="clock" role="timer" aria-label="Time until the wedding">
+      <div class="days"><b id="cd-d">—</b><span class="lbl">Days</span></div>
+      <div class="hms">
+        <div><b id="cd-h">—</b><span class="lbl">Hrs</span></div>
+        <div><b id="cd-m">—</b><span class="lbl">Min</span></div>
+        <div><b id="cd-s">—</b><span class="lbl">Sec</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="story" aria-labelledby="story-title">
+  <div class="head">
+    <p class="eyebrow">The Lawson &amp; Davida love story</p>
+    <h2 class="h2 press" id="story-title" style="margin-top:10px">Our Story</h2>
+    <p class="opening">Some love stories begin with a spark. Ours began with purpose.</p>
+  </div>
+  <div class="track" id="track" role="region" aria-label="Chapters of our story. Swipe or use the arrows." tabindex="0"></div>
+  <div class="ctl">
+    <button class="arrow" type="button" id="prev" aria-label="Previous chapter"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button class="arrow" type="button" id="next" aria-label="Next chapter"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></button>
+  </div>
+</section>
+
+<dialog class="letter" id="letter" aria-labelledby="letter-title">
+  <div class="paper letter-paper" id="letter-paper">
+    <span class="hairline"></span>
+    <button class="letter-close" type="button" id="letter-close" aria-label="Close the letter">×</button>
+    <img class="seal-sm" src="assets/img/wax-seal-512.webp" width="512" height="512" alt="">
+    <span class="ldate" id="letter-date"></span>
+    <h3 id="letter-title"></h3>
+    <img class="sep botan" src="assets/img/floral-separator-450.webp" width="450" height="59" alt="" loading="lazy">
+    <div id="letter-text"></div>
+    <p class="sign">Vida &amp; Niyi</p>
+    <div class="letter-nav">
+      <button type="button" id="letter-prev">‹ Previous letter</button>
+      <button type="button" id="letter-next">Next letter ›</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ CROWN OF LIFE ============ -->
+<section class="crown" id="crown" aria-labelledby="crown-title">
+  <svg class="ornament" aria-hidden="true"><use href="#ornament"/></svg>
+  <p class="eyebrow">La Corona de la Vida</p>
+  <h2 class="h2 press-dark" id="crown-title">The Crown of Life</h2>
+  <div class="weave" aria-label="La from Lawson, Vida from Davida">
+    <div><span class="press-dark">La</span><i>from Lawson</i></div>
+    <div><span class="press-dark">Vida</span><i>from Davida</i></div>
+  </div>
+  <p class="means">Two names, woven into one. In Spanish, <i>La Vida</i> means <i>The Life</i>.</p>
+  <blockquote>
+    Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life, which the Lord hath promised to them that love him.
+    <cite>James 1:12</cite>
+  </blockquote>
+  <p class="closing-note">A reminder of the life we hope to build: grounded in faith, strengthened by grace, and devoted to loving God and serving others.</p>
+</section>
+
+<!-- ============ CELEBRATIONS ============ -->
+<section class="celebrations" id="celebrations" aria-labelledby="cel-title">
+  <h2 class="h2 press" id="cel-title">The Celebrations</h2>
+  <p class="eyebrow" style="margin-top:12px">Two ceremonies, one union</p>
+
+  <article class="paper panel">
+    <span class="hairline"></span>
+    <img class="botan posy a" src="assets/img/floral-posy-1.webp" width="238" height="257" alt="" loading="lazy">
+    <img class="botan posy b" src="assets/img/floral-posy-3.webp" width="307" height="272" alt="" loading="lazy">
+    <p class="eyebrow">First</p>
+    <h3 class="press">Traditional Wedding</h3>
+    <img class="sep botan" src="assets/img/floral-separator-450.webp" width="450" height="59" alt="" loading="lazy">
+    <p class="when">Date to be announced</p>
+    <p class="where">Abuja, Nigeria</p>
+    <p class="note">Held before the white wedding, as our families come together in celebration of our union.</p>
+    <span class="tba">Details to follow</span>
+  </article>
+
+  <article class="paper forest panel">
+    <span class="hairline"></span>
+    <svg class="flourish tl" aria-hidden="true"><use href="#flourish"/></svg><svg class="flourish tr" aria-hidden="true"><use href="#flourish"/></svg>
+    <svg class="flourish bl" aria-hidden="true"><use href="#flourish"/></svg><svg class="flourish br" aria-hidden="true"><use href="#flourish"/></svg>
+    <p class="eyebrow">Then</p>
+    <h3 class="press-dark">The White Wedding</h3>
+    <svg class="ornament" style="width:120px;height:32px;margin:16px auto;display:block;color:var(--gold-soft)" aria-hidden="true"><use href="#ornament"/></svg>
+    <p class="when">Monday · 29 March 2027</p>
+    <p class="where">Abuja, Nigeria · Venue to be announced</p>
+    <p class="note">The marriage ceremony, followed by the reception. An intimate celebration with our closest family and friends.</p>
+    <span class="tba">Map and time to follow</span>
+  </article>
+</section>
+
+<!-- ============ PROGRAMME ============ -->
+<section class="programme" id="programme" aria-labelledby="prog-title" style="padding-top:20px">
+  <img class="botan" src="assets/img/floral-separator-450.webp" width="450" height="59" alt="" loading="lazy" style="width:min(70%,320px);margin:0 auto 26px">
+  <h2 class="h2 press" id="prog-title">The Day</h2>
+  <p class="eyebrow" style="margin-top:12px">Programme · 29 March 2027</p>
+  <ol>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">Guests Arrive</span></li>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">Marriage Ceremony</span></li>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">Photographs</span></li>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">Reception</span></li>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">First Dance</span></li>
+    <li><span class="t">Time TBC</span><span class="dot"></span><span class="n">Thanksgiving &amp; Send-off</span></li>
+  </ol>
+  <p class="fine">Timings will be shared once the venue is confirmed.</p>
+</section>
+
+<!-- ============ DRESS CODE ============ -->
+<section class="dress" id="dress" aria-labelledby="dress-title">
+  <h2 class="h2 press" id="dress-title">Dress Code</h2>
+  <p class="eyebrow" style="margin-top:12px">Formal</p>
+  <p class="lede">Come dressed for an elegant celebration. If you'd like to match our day, these are our colours.</p>
+  <div class="paper swatch-card">
+    <div class="swatches">
+      <div class="sw"><div class="fabric forest-velvet"></div><span>Forest</span><small>velvet</small></div>
+      <div class="sw"><div class="fabric ivory-linen"></div><span>Ivory</span><small>linen</small></div>
+      <div class="sw"><div class="fabric gold-satin"></div><span>Gold</span><small>satin</small></div>
+      <div class="sw"><div class="fabric blush-silk"></div><span>Blush</span><small>silk</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAY ============ -->
+<section class="stay" id="stay" aria-labelledby="stay-title" style="padding-top:20px">
+  <h2 class="h2 press" id="stay-title">Where to Stay</h2>
+  <p class="eyebrow" style="margin-top:12px">For guests travelling to Abuja</p>
+  <div class="paper frame-card">
+    <span class="hairline"></span>
+    <p>Hotel recommendations will be shared here once our venue is confirmed.</p>
+  </div>
+</section>
+
+<!-- ============ GIFT ============ -->
+<section class="gift" id="gift" aria-labelledby="gift-title" style="padding-top:20px">
+  <h2 class="h2 press" id="gift-title">Wedding Gift</h2>
+  <img class="botan garland" src="assets/img/floral-garland-1000.webp" width="1000" height="275" alt="" loading="lazy">
+  <p class="big">Your presence is our greatest gift.</p>
+  <p class="lede" style="margin-top:0">If you would like to bless us further, a cash gift would be warmly appreciated. Details will be shared closer to the day.</p>
+</section>
+
+<!-- ============ RSVP ============ -->
+<section class="rsvp" id="rsvp" aria-labelledby="rsvp-title" style="padding-top:20px">
+  <h2 class="h2 press" id="rsvp-title">RSVP</h2>
+  <p class="eyebrow" style="margin-top:12px">The favour of a reply is kindly requested</p>
+  <div class="paper rsvp-card">
+    <p class="intro">We are keeping our white wedding an intimate celebration with our closest family and friends. This invitation admits one guest on 29 March 2027.</p>
+
+    <form id="rsvp-form" novalidate>
+      <div class="field">
+        <label for="guest-name"><span class="num">01</span>Your full name</label>
+        <input type="text" id="guest-name" name="name" autocomplete="name" placeholder="Full name" aria-describedby="rsvp-error">
+      </div>
+      <fieldset class="field">
+        <legend><span class="num">02</span>Will you be joining us?</legend>
+        <label class="choice"><input type="radio" id="attend-yes" name="attending" value="yes"> Joyfully accepts</label>
+        <label class="choice"><input type="radio" id="attend-no" name="attending" value="no"> Regretfully declines</label>
+      </fieldset>
+      <div class="field">
+        <label for="guest-phone"><span class="num">03</span>Phone number <i style="color:var(--muted)">(optional)</i></label>
+        <input type="tel" id="guest-phone" name="phone" autocomplete="tel" placeholder="So we can share venue details">
+      </div>
+      <div class="field">
+        <label for="guest-message"><span class="num">04</span>A message for the couple</label>
+        <textarea id="guest-message" name="message" placeholder="We'd be delighted to hear from you"></textarea>
+      </div>
+      <p class="error" id="rsvp-error" role="alert"></p>
+      <button class="btn" type="submit"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8l13-6-4 13-2.5-5.5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>Prepare my reply</button>
+    </form>
+
+    <div class="next-step" id="next-step" hidden>
+      <h3 class="press" id="next-title" tabindex="-1">One last step</h3>
+      <p class="must">Your RSVP is only received once you press <b>Send</b> in WhatsApp.</p>
+      <pre id="rsvp-text"></pre>
+      <a class="btn" id="rsvp-whatsapp" href="#" target="_blank" rel="noopener">Open WhatsApp to send</a>
+      <p class="hint" style="text-align:center">It opens a message to +234 806 801 5338 with your reply already written.</p>
+      <button class="btn ghost" type="button" id="rsvp-copy">Copy my reply instead</button>
+      <p class="hint" id="copy-status" aria-live="polite" style="text-align:center"></p>
+      <button class="btn text" type="button" id="rsvp-edit">Edit my answers</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<footer class="closing" id="closing">
+  <div class="arch">
+    <img class="botan" src="assets/img/floral-arch-800.webp" srcset="assets/img/floral-arch-800.webp 800w, assets/img/floral-arch.webp 1400w" sizes="(max-width:490px) 94vw, 460px" width="800" height="1075" alt="" loading="lazy" decoding="async">
+    <div class="z">
+      <p class="eyebrow">This is our story</p>
+      <p class="names press" style="margin-top:14px">Omoniyi<span class="amp">&amp;</span>Davida</p>
+      <p class="this">This is La Vida.</p>
+      <p class="eyebrow" style="margin-top:16px">29 · 03 · 2027 · Abuja</p>
+    </div>
+  </div>
+  <p class="signoff">With love, Vida &amp; Niyi</p>
+  <p class="credit">A love rooted in faith · A life devoted to purpose</p>
+</footer>
+
+</main>
+</div>
+</div>
+
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
