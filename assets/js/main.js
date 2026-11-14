@@ -362,7 +362,7 @@
     });
     $("#letter-prev").disabled = i === 0;
     $("#letter-next").disabled = i === CHAPTERS.length - 1;
-    paperEl.scrollTop = 0;
+    $("#letter-scroll").scrollTop = 0;
   }
   function openLetter(i) {
     fill(i);
